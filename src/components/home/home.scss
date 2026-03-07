@@ -1,0 +1,203 @@
+.right{
+    // background-color: aqua;
+    height: calc(100vh - 57px);
+    position: relative;
+    // height: max-content;
+        overflow: hidden;
+
+}
+.right {
+    position: relative;
+    height: 700px;
+    // background-image: url("../../assets/heroLogo.png");
+    // width: 100%;
+    // background-repeat: no-repeat;
+    // background-position: 350px;
+    margin: 0;
+}
+.right .two{
+    position: absolute;
+    right: 0;
+    height: 100%;
+    z-index: -1;
+    max-width: 100%;
+}
+.right .one{
+    position: absolute;
+    right: -180px;
+    height: 100%;
+    max-width: calc(100% + 250px);
+}
+.blue-easily{
+    position: relative;
+}
+.blue-easily img{
+    position: absolute;
+    right: 0;
+    bottom: -10px;
+    max-width: 100%;
+}
+.bg-custum,.bg-custum:focus{
+    background-color: #CEDCFF;
+}
+.left h1{
+    font-size: 48px;
+}
+.z-index-10{
+    z-index: 10;
+}
+.animate{
+    animation-name: fade;
+    animation-timing-function: ease;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-play-state: running;
+    animation-delay: 1s;
+}
+.form-control:focus,.form-control:focus:focus-visible{
+    // box-shadow: none !important;
+    border: none !important;
+}
+.search-bar{
+    height: 50px;
+    box-shadow: 0 6 12 0 #135EAC1F;
+}
+.search-btn{
+    right: 20px;
+    top: 24px;
+    z-index: 5 !important;
+}
+label[for = 'search']{
+    color: gray;
+    font-size: x-large;
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    z-index: 5;
+    transition: all .3s ease;
+}
+.search-bar:hover ~ label[for = 'search'],.search-bar:focus ~ label[for = 'search']{
+    transform: scale(1.2);
+
+}
+.popular{
+    background-color: #e8f1fb;
+    padding: 8px 24px;
+    width: fit-content;
+    margin:0 auto 24px;
+    border-radius: 10px;
+    color: #1572D3;
+    text-transform: uppercase;
+}
+.w-md-50{
+    width:50%
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.carousel {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none; 
+  display: flex;
+  overflow-x: auto;
+}
+.group{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // gap: 1rem;
+        animation: move 15s linear 0s infinite normal forwards;
+    
+.poppins-bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+}
+.group1{
+    @extend .group;
+    animation-duration: 30s !important;
+}
+.item{
+    flex: 0 0 400px;
+    width: 60px;
+    height: 100px;
+    align-content: center;
+    
+}
+.test{
+    @extend .item;
+    flex: 0 0 600px;
+    height: auto;
+
+}
+.test img{
+    // height: 100% !important;
+    // object-fit: cover;
+}
+
+.audi{
+    left:-80px;
+    top:150px
+}
+.vector{
+    left: -64px;
+    top: 50px;
+}
+.bg-lightblue{
+    background-color: #f7fbff;
+    position: relative;
+    
+}
+.bg-lightblue::before{
+        content: ",,";
+    font-size: 800px;
+    color: #e0edfb;
+    font-family: "Agdasima", sans-serif;
+    position: absolute;
+    top: -234px;
+    right: 100px;
+    transform: rotate3d(19, 0, 0, 180deg);
+    z-index:0;
+}
+.bg-lightblue::after{
+        content: ",,";
+    font-size: 800px;
+    color: #e0edfb;
+    font-family: "Agdasima", sans-serif;
+    position: absolute;
+    top: -70px;
+    left: 60px;
+    transform: rotate(180deg);
+    z-index:0;
+}
+
+footer{
+    background-color: #051C34;
+}
+
+@media screen and (max-width:991px) {
+    .w-md-50{
+        width: 75%;
+    }
+}
+@keyframes fade{
+    from{
+        transform: scale(0);
+        transform-origin: right;
+    }
+    to{
+        transform: scale(1);
+    }
+}
+@keyframes move {
+    from{
+        transform: translatex(0);
+    }
+    to{
+        transform: translatex(-100%);
+    }
+}
