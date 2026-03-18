@@ -7,26 +7,43 @@ import "./home.scss";
 import easily from "../../assets/Vector 1.png";
 import RentalCard from "../rentalCard/rentalCard";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import audi from "../../assets/Audi 1.png";
 import vector from "../../assets/Vector.png";
 import man from "../../assets/test-man.png";
 // import girl from "../../assets/test-girl.jpg";
 import iphone from "../../assets/iPhone 14 Pro Space Black Mockup.png";
+import car1 from '../../assets/cars/Audi 1.png'
+import car2 from '../../assets/cars/image 11.png'
+import car3 from '../../assets/cars/image 12.png'
+import car4 from '../../assets/cars/image 13.png'
+import brand1 from '../../assets/brands/Frame 24.png'
+import brand2 from '../../assets/brands/Frame.png'
+import brand3 from '../../assets/brands/Group.png'
+import brand4 from '../../assets/brands/Nissan-Brand-Logo-RGB-W-w_R.png'
+import brand5 from '../../assets/brands/Vector.png'
+import brand6 from '../../assets/brands/Volvo Cars svg.png'
+import type Car from "../car";
 
 const Home = () => {
-  const brandsImages = Object.values(
-    import.meta.glob("../../assets/brands/*.png", { eager: true }),
-  ).map((i) => i.default);
-  const carsImages = import.meta.glob("../../assets/cars/*.png", {
-    eager: true,
-  });
-  const images = Object.values(carsImages).map((i) => i.default);
+  
+    
+  
+  const brandsImages = [brand1,brand2,brand3,brand4,brand5,brand6]
+  // Object.values(
+  //   import.meta.glob("../../assets/brands/*.png", { eager: true }),
+  // ).map((i) => i.default);
+  // const carsImages = 
+  // import.meta.glob("../../assets/cars/*.png", {
+  //   eager: true,
+  // });
+  const images:string[] = [car1,car2,car3,car4]
+  // Object.values(carsImages).map((i) => i.default);
 
-  const [allCars, setAllCars] = useState([]);
+  const [allCars, setAllCars] = useState<Car[]|[]>([]);
   const [name, setName] = useState("");
-  const [first4Cars, setFirst4Cars] = useState([]);
+  const [first4Cars, setFirst4Cars] = useState<Car[]|[]>([]);
   const getCars = async () => {
     try {
       const response = await axios.get(`https://myfakeapi.com/api/cars`);
@@ -80,9 +97,11 @@ const Home = () => {
             aria-label="Recipient’s username"
             aria-describedby="button-addon2"
             onInput={(e) => {
-              setName(e.target?.value ? e.target.value : name);
+              // console.log(typeof e.target.);
+              
+              setName(e.currentTarget.value);
               // getCars().then((res)=>{setFirst4Cars(res)});
-              const filterdCars = allCars.filter((i) =>
+              const filterdCars:Car[] = allCars.filter((i) =>
                 i.car.toLowerCase().includes(name.toLowerCase()),
               );
               setFirst4Cars(filterdCars);

@@ -1,29 +1,40 @@
-import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Route, Router, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import RentalCard from '../rentalCard/rentalCard';
+import { useEffect, useState } from 'react';
+import type Car from '../car';
+import car1 from '../../assets/cars/Audi 1.png'
+import car2 from '../../assets/cars/image 11.png'
+import car3 from '../../assets/cars/image 12.png'
+import car4 from '../../assets/cars/image 13.png'
 export default function Cars() {
   const location = useLocation();
-  const [carsList,setCarsList] = useState([]);
+  const [carsList,setCarsList] = useState<Car[]|[]>([]);
   // const [index,setIndex] = useState(1);
-  const carsImages = Object.values(import.meta.glob("../../assets/cars/*.png", {
-    eager: true,
-  })).map(i=>i.default);
-  const getCars =async (i:number = 1)=>{
-    console.log("hi");
-    
+  const carsImages:string[] = [car1,car2,car3,car4]
+  //  Object.values(import.meta.glob("../../assets/cars/*.png", {
+  //   eager: true,
+  // })) 
+  // .map((i)=>{
+  //   // console.log(i);
+  //   return i.default;
+  // });
+  const getCars =async ()=>{    
     const  data = (await axios.get("https://myfakeapi.com/api/cars")).data.cars;
     setCarsList(data);
     }
     useEffect(()=>{
-      getCars();
+     
+      (()=>{
+        getCars();
+})()
     },[])
   return (
     <>
       <header className='container p-5 w-auto'>Home{location.pathname}</header>
       <div className="container">
         <div className="row">
-          {(carsList.length < 1)?(<div className="text-center">
+          {(carsList?.length < 1)?(<div className="text-center">
   <div className="spinner-border text-primary" role="status">
     <span className="visually-hidden">Loading...</span>
   </div>

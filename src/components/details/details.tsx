@@ -1,12 +1,13 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import vector from "../../assets/Vector.png";
 import audi from "../../assets/Audi 1.png";
+import type Car from "../car";
 
 export default function Details() {
   const { id } = useParams();
-  const [carDetails, setCarDetails] = useState({});
+  const [carDetails, setCarDetails] = useState<Car|undefined>(undefined);
   const getCarById = async (carId: number = 1) => {
     const response = await axios.get(`https://myfakeapi.com/api/cars/${carId}`);
     return response.data.Car;
@@ -21,12 +22,12 @@ export default function Details() {
   );
 
   useEffect(() => {
-    getCarById(+id).then((car) => {
+    getCarById(id?+id:1).then((car) => {
       console.log(car);
 
       setCarDetails(car);
     });
-  }, []);
+  });
   return (
     <>
     {carDetails?.id == undefined ? laoder : (
